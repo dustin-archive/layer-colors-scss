@@ -2,6 +2,12 @@
 
 > layer transparent colors
 
+## Installation
+
+```sh
+$ npm install --save layer-colors-scss
+```
+
 ## Usage
 
 #### `layer-colors($above, $below)`
