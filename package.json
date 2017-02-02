@@ -1,6 +1,6 @@
 {
   "name": "layer-colors-scss",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "layer transparent colors",
   "main": "main.scss",
   "scripts": {
