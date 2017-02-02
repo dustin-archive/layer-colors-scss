@@ -11,11 +11,12 @@
     "url": "git+https://github.com/whaaaley/layer-colors-scss.git"
   },
   "keywords": [
-    "layer",
-    "colors",
     "color",
+    "colors",
+    "layer",
+    "sass",
     "scss",
-    "sass"
+    "transparent"
   ],
   "author": "Dustin Dowell <dustindowell22@gmail.com>",
   "license": "MIT",
