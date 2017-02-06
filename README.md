@@ -12,7 +12,9 @@ $ npm install --save layer-colors-scss
 
 #### `layer-colors($above, $below)`
 
-Output a color from two colors as if they were layered in Photoshop or a browser. The resulting color is not an average.
+Outputs a color from two colors as if they were layered in Photoshop or a browser.
+
+The resulting color is not an average.
 
 ```scss
 layer-colors(rgba(dodgerblue, 0.25), rgba(orange, 0.75))
