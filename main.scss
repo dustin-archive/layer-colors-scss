@@ -1,23 +1,35 @@
-@function layer-colors($above, $below) {
-  $alpha-above: alpha($above);
-  $color: null;
-  $alpha: null;
+@function composite-merge($a, $b, $a-alpha, $b-alpha, $alpha) {
+  $a-pre: $a * $a-alpha;
+  $b-pre: $b * $b-alpha;
+  @return round(($a-pre + $b-pre * (1 - $a-alpha)) / $alpha);
+}
 
-  @if $alpha-above == 1 {
-    @return $above;
-  } @else {
-    $color-above: rgba($above, 1);
-    $color-below: rgba($below, 1);
-    $alpha-below: alpha($below);
+@function composite-over($a, $b) {
+  $a-alpha: alpha($a);
 
-    @if $alpha-below == 1 {
-      $color: mix($color-above, $color-below, $alpha-above * 100%);
-      $alpha: 1;
-    } @else {
-      $color: mix($color-above, $color-below);
-      $alpha: $alpha-below + ((1 - $alpha-below) * $alpha-above);
-    }
+  // return when no processing is needed
+  @if $a-alpha == 1 { @return $a; }
+  @if $a-alpha == 0 { @return $b; }
+
+  $b-alpha: alpha($b);
+
+  // merge alpha channels
+  $alpha: $a-alpha + $b-alpha * (1 - $a-alpha);
+
+  // merge color channels
+  $r: composite-merge(red($a), red($b), $a-alpha, $b-alpha, $alpha);
+  $g: composite-merge(green($a), green($b), $a-alpha, $b-alpha, $alpha);
+  $b: composite-merge(blue($a), blue($b), $a-alpha, $b-alpha, $alpha);
+
+  @return rgba($r, $g, $b, $alpha);
+}
+
+@function composite($colors) {
+  $result: nth($colors, 1);
+
+  @for $i from 2 through length($colors) {
+    $result: composite-over($result, nth($colors, $i));
   }
 
-  @return rgba($color, $alpha);
+  @return $result;
 }

@@ -4,15 +4,17 @@
   "description": "layer transparent colors",
   "main": "main.scss",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node-sass test.scss"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/whaaaley/layer-colors-scss.git"
   },
   "keywords": [
+    "alpha",
     "color",
     "colors",
+    "composite",
     "layer",
     "sass",
     "scss",
@@ -23,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/whaaaley/layer-colors-scss/issues"
   },
-  "homepage": "https://github.com/whaaaley/layer-colors-scss#readme"
+  "homepage": "https://github.com/whaaaley/layer-colors-scss#readme",
+  "devDependencies": {
+    "node-sass": "^4.5.0"
+  }
 }

@@ -1,29 +1,53 @@
-# layer-colors-scss
+# color-composite-scss
 
-> layer transparent colors
+> compose multiple colors with alpha channels into one
 
 ## Installation
 
 ```sh
-$ npm install --save layer-colors-scss
+$ npm install --save color-composite-scss
 ```
 
 ## Usage
 
-#### `layer-colors($above, $below)`
+### `composite($top ... $bottom)`
 
-Outputs a color from two colors as if they were layered in Photoshop or a browser.
+Compose multiple colors with alpha channels into one.
 
 The resulting color is not an average.
 
 ```scss
-layer-colors(rgba(dodgerblue, 0.25), rgba(orange, 0.75))
-// => rgba(143, 155, 128, 0.8125)
+composite(rgba(127, 195, 255, 0.5) rgba(195, 127, 255, 0.75))
+// => rgba(156, 166, 255, 0.875)
 ```
 
 For comparison here is the result of `mix()`
 
 ```scss
-mix(rgba(dodgerblue, 0.25), rgba(orange, 0.75))
-// => rgba(199, 160, 64, 0.5)
+mix(rgba(127, 195, 255, 0.5), rgba(195, 127, 255, 0.75))
+// => rgba(170, 153, 255, 0.625)
 ```
+
+### `composite-over($top, $bottom)`
+
+Composites `$top` over `$bottom`. This is a bare implementation of composite.
+
+```scss
+composite-over(rgba(127, 195, 255, 0.5), rgba(195, 127, 255, 0.75))
+// => rgba(156, 166, 255, 0.875)
+```
+
+### `composite-merge($a, $b, $a-alpha, $b-alpha, $alpha)`
+
+Composites two parallel channel values together with their associated color's alpha.
+
+This function is used internally.
+
+```scss
+composite-merge(127, 195, 0.5, 0.75, 0.875)
+// => rgba(156, 166, 255, 0.875)
+```
+
+## Related
+
+* [color-composite](https://github.com/colorjs/color-composite) — compose multiple colors with alpha channels into one

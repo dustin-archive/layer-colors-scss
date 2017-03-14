@@ -1,0 +1,12 @@
+@import 'main';
+
+$blue: rgba(127, 195, 255, 0.5);
+$purple: rgba(195, 127, 255, 0.75);
+
+$mix: mix($blue, $purple);
+$composite: composite($blue $purple);
+$photoshop: rgba(156, 166, 255, 0.87);
+
+@debug 'mix: #{ red($mix) green($mix) blue($mix) alpha($mix) }';
+@debug 'composite: #{ red($composite) green($composite) blue($composite) alpha($composite) }';
+@debug 'photoshop: #{ red($photoshop) green($photoshop) blue($photoshop) alpha($photoshop) }';
